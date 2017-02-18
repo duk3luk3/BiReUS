@@ -39,8 +39,49 @@ Arguments:
 * `-c` or `--cleanup` removes all existing patches (but does not reset the .versions file)
 * `-fo` or `--forward-only` skips generation of backward-patches
 
-**Note:** For new repositories you need to create an info.json and a .versions file in the repository folder and add the first folder by hand.
 
+#### Repo structure
+
+The server repos are intended to be server by a simple web server.
+
+The repo structure is like this:
+
+    working_dir
+        repository1
+            v0.1
+                foo.ext
+                bar.ext
+            v0.2
+                foo.ext
+                qux.ext
+            info.json
+            .versions
+            __patches__
+
+For new repositories you need to create an info.json and a .versions file in the repository folder and add the first folder by hand.
+
+`info.json` structure:
+
+```json
+{
+	"url": "http://example.com/bireus/faf-client",
+	"name": "faf-client",
+	"latest_version": "0.12.2"
+}
+```
+
+`.versions` is just a file containing all versions, newline-separated.
+
+Here is an example:
+
+    bireus
+        faf-client
+            v0.12.0
+                client.zip
+            v0.12.1
+                client.zip
+            v0.12.2
+                client.zip
 
 ### Client
 
